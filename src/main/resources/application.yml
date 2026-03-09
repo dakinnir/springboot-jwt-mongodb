@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: sprint-security-jwt
+  mongodb:
+    uri: ${MONGODB_URI:mongodb://localhost:27017/test}
+    auto-index-creation: true
+
+server:
+  port: 8080
+jwt:
+  secret: ${JWT_SECRET:your_jwt_secret_key}
+  expiration: ${JWT_EXPIRATION:3600000} # 1 hour in milliseconds
