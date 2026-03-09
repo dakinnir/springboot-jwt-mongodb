@@ -2,8 +2,6 @@
 
 This project is a simple **user authentication system** built with **Spring Boot**, **MongoDB**, and **JWT**. It includes **email verification**, **user registration**, and **login**.
 
----
-
 ## Features
 
 - User registration with email verification
@@ -12,8 +10,6 @@ This project is a simple **user authentication system** built with **Spring Boot
 - Password hashing with BCrypt
 - Custom exception handling with proper HTTP status codes
 - Input validation with Spring Validation
-
----
 
 ## Getting Started
 
