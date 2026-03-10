@@ -1,31 +1,24 @@
 package com.dakinnir.sprintsecurityjwt.controller;
 
-import com.dakinnir.sprintsecurityjwt.dto.*;
-import com.dakinnir.sprintsecurityjwt.service.AuthService;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.dakinnir.sprintsecurityjwt.dto.UserResponse;
+import com.dakinnir.sprintsecurityjwt.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/users")
 public class UserController {
+    private final UserService userService;
 
-    @Autowired
-    private AuthService authService;
-
-    @PostMapping("/register")
-    public ResponseEntity<UserResponse> registerUser(@Valid @RequestBody UserRegistrationRequest request) {
-        return ResponseEntity.ok(authService.registerUser(request));
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<UserLoginResponse> loginUser(@Valid @RequestBody UserLoginRequest request) {
-        return ResponseEntity.ok(authService.loginUser(request));
-    }
-
-    @GetMapping("/verify-email")
-    public ResponseEntity<VerificationResponse> verifyEmail(@RequestParam("token") String token) {
-        return ResponseEntity.ok(authService.verifyEmail(token));
+    // Get current user's profile
+    @GetMapping("/me")
+    public ResponseEntity<UserResponse> getCurrentUser(@AuthenticationPrincipal UserDetails user) {
+        return ResponseEntity.ok(userService.getCurrentUser(user.getUsername()));
     }
 }

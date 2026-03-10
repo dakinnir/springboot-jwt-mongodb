@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * CustomUserDetailsService is a service that implements UserDetailsService to load user-specific data during authentication with email field.
  */
@@ -35,5 +37,9 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .username(user.getEmail())
                 .password(user.getPassword())
                 .build();
+    }
+
+    public Optional<User> findByEmail(String email) {
+        return repository.findByEmail(email);
     }
 }
