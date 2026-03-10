@@ -1,12 +1,38 @@
 spring:
   application:
     name: sprint-security-jwt
+  # Configure MongoDB connection properties
   mongodb:
     uri: ${MONGODB_URI:mongodb://localhost:27017/test}
     auto-index-creation: true
 
+  # Configure Spring MVC to throw an exception when no handler is found for a request
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:username}
+    password: ${MAIL_PASSWORD:password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          # Enable STARTTLS to secure the connection using SSL/TLS
+          starttls:
+            enable: true
+            required: true
 server:
   port: 8080
+  error:
+    whitelabel:
+      enabled: false
+
+# JWT configuration
 jwt:
   secret: ${JWT_SECRET:your_jwt_secret_key}
   expiration: ${JWT_EXPIRATION:3600000} # 1 hour in milliseconds

@@ -13,11 +13,12 @@ public class SprintSecurityJwtApplication {
         SpringApplication.run(SprintSecurityJwtApplication.class, args);
     }
 
+    /**
     @Bean
     CommandLineRunner test(MongoTemplate mongoTemplate) {
         return args -> {
             System.out.println("Connected DB: " + mongoTemplate.getDb().getName());
         };
     }
-
+*/
 }
