@@ -1,14 +1,15 @@
 package com.dakinnir.sprintsecurityjwt.model;
 
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.index.Indexed;
 
 @Data
 @Document(collection = "users")
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class User {
     @Id

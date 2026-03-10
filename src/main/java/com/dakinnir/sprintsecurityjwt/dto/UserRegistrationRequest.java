@@ -1,9 +1,15 @@
 package com.dakinnir.sprintsecurityjwt.dto;
 
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UserRegistrationRequest {
     @NotNull
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
