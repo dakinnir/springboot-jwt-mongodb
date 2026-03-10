@@ -23,5 +23,5 @@ This project is a simple **user authentication system** built with **Spring Boot
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/springboot-jwt-mongodb.git
+   git clone https://github.com/dakinnir/springboot-jwt-mongodb.git
    cd springboot-jwt-mongodb
